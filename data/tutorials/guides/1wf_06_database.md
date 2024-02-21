@@ -13,7 +13,7 @@ The OCaml ecosystem provides multiple libraries that can be used to access an RD
 One of these libraries is `caqti`. It has the following features:
 
 - It can be used with multiple RDBMS (Postgres, MariaDB, SQLite3).
-- It can be used in a Lwt context. That permits use in some application servers. Especially the Dream framework, that has some dedicated functions that help using Caqti.
+- It can be used in a Lwt context. That permits its use in some application servers. Especially the Dream framework, that has some dedicated functions that help using Caqti.
 - It can be used with the `ppx_rapper` preprocessor. This preprocessor converts an annotated SQL query into a query function that leverages the strong typing feature of OCaml.
 
 This tutorial is made to facilitate the integration of the multiple involved libraries.
