@@ -35,13 +35,13 @@ let () =
   ...
 ```
 
-We present the program like:
+We present the program like that:
 
 ```ocaml
 open Lwt_result.Syntax
 
 let () =
-  match Lwt_main.run(
+  match Lwt_main.run (
     let* result1 = query1 () in
     let* result2 = query2 () in
     Lwt.return (Result.Ok ()))
@@ -50,18 +50,13 @@ let () =
   | Result.Error r -> ...
 ```
 
-The `let*` notation is associated to the `bind` function, which deals with Lwt sequencing
-(a `query1 ()` is typically of type `('a, 'b) result Lwt.t` which represent a computation
-which need to be scheduled). Once the query has been scheduled and executed, the `Result`
-value is analysed and the value of `Result.Ok value` is extracted. If the result is `Error err`,
-the thread of queries is aborted.
+The `let*` notation is associated with the `bind` function that deals with Lwt sequencing. A `query1 ()` has often type `('a, 'b) result Lwt.t`, which represents a computation that needs to be scheduled. Once the query has been scheduled and executed, the `Result` value is tested. If the value is available in `Ok`, it is extracted. If the result is `Error`, the thread of queries is aborted.
+
+Refer to the tutorials on [Monads](/docs/monads) and [operators](/docs/operators) for more on bind operators and custom lets operators.
 
 ## The Database Connection
 
-`caqti` provides a `connect` function which establish a connection to the database, but it
-is more secure to use `with_connection` which garantee the closure of the database even in the
-presence of an error.
-
+`caqti` provides a `connect` function that establishes a connection to the database. Still, it is more secure to use `with_connection`, which ensures the database's closure even in the presence of an error.
 Then the following template should be used:
 
 ```ocaml
@@ -97,7 +92,7 @@ The idea is to type something like this:
 
 ```ocaml
 let query = [%rapper get_many {sql| SELECT @int{id}, @string?{value} FROM a
-                                    WHERE category = %string{category} |sql} ]  
+                                    WHERE category = %string{category} |sql} ]
 ```
 
 `%type{name}` is used to indicate parameters which will be provided when calling the query.
@@ -122,7 +117,7 @@ There are different types of queries. A `get_many` query (like the example) retu
 rows. `get_one` just returns the unique row, `get_opt` returns an option value (`None` or `Some`
 depending on the existance of a queried row), `execute` returns nothing `()`.
 
-By default rows are presented as tuples.
+By default, each rows has a tuple type.
 
 ### `ppx_rapper` Options
 
@@ -135,7 +130,7 @@ Depending on the needs, a `ppx_rapper` query can be written as
 Where supported options are:
 
 - `record_in` : instead of calling the query with one argument per parameter, a single
-argument is provided. It must be a record whose the fields correspond to the parameters.
+argument is provided. It must be a record whose fields correspond to the parameters.
 - `record_out` : instead of outputing row(s) as tuple(s), they are presented as record(s).
 - `function_out` : the query is called with a function as its first argument. This function
 is called for each row with every values (column names) as a labelled arguments. The return value of the query
@@ -177,7 +172,7 @@ Using `List.map` creates queries that won't be chained from
 a `lwt` point of view. The `Lwt_list.iter_s` and `Lwt_list.map_s` can iter
 them... but won't stop at the first error.
 
-If we want to iter all the queries even in the presence of an error, we can
+If we want to iter all the queries, even in the presence of an error, we can
 type
 
 ```ocaml
