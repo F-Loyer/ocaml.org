@@ -96,7 +96,7 @@ let query = [%rapper get_many {sql| SELECT @int{id}, @string?{value} FROM a
 ```
 
 `%type{name}` is used to indicate parameters which will be provided when calling the query.
-`@type{name}` is uses to indicate values (column names) which will be returned by the database after executing the query.
+`@type{name}` is used to indicate values (column names) which will be returned by the database after executing the query.
 
 Types may be `int`, `int32`, `int64`, `string`, `octets`, `float`, `bool`, `pdate`,
 `ptime_span` and `cdate` and `ctime` from `caqti-type-calendar`. A `?` like in this
