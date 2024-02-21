@@ -88,7 +88,7 @@ The following URIs are supported:
 
 ## Declaring and Using Queries
 
-### Default queries
+### Default Queries
 
 The declaration of Caqti queries is rather complex. Hopefully, the `ppx_rapper` preprocessor
 permits an easier composition of such queries.
@@ -124,7 +124,7 @@ depending of the existance of a queried row), `execute` returns nothing `()`.
 
 By default rows are presented as tuples.
 
-### ppx_rapper options
+### `ppx_rapper` Options
 
 Depending of the needs, a `ppx_rapper` query can be written as
 
@@ -143,7 +143,7 @@ is composed of the returned values of this function. This works like [List/Optio
 
 Options are separated by whitespaces.
 
-## Custom error handling
+## Custom Error Handling
 
 `(let*)` from `Lwt_result.Syntax` is handy if we want a default error
 handling (stopping the chain of queries, returning an error type).
