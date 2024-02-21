@@ -156,8 +156,8 @@ Typically:
                   Lwt.return (Result.Error err)
 ```
 
-Note: we can also change the `Lwt.return` values... An `Ok` query could be
-wrong if the returned values do not respect some assertions. An `Error` query could also be mitigated.
+Note: we can also change the `Lwt.return` values... An `Ok` query result could be
+wrong if the returned values do not respect some assertions. An `Error` query result could also be mitigated.
 
 If we want to embed the custom error handled query in the `(let*)` chain,
 you may use the following expression:
