@@ -117,7 +117,7 @@ There are different types of queries. A `get_many` query (like the example) retu
 rows. `get_one` just returns the unique row, `get_opt` returns an option value (`None` or `Some`
 depending on the existance of a queried row), `execute` returns nothing `()`.
 
-By default, each rows has a tuple type.
+By default, each row has a tuple type.
 
 ### `ppx_rapper` Options
 
