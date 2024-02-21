@@ -95,7 +95,7 @@ let query = [%rapper get_many {sql| SELECT @int{id}, @string?{value} FROM a
                                     WHERE category = %string{category} |sql} ]
 ```
 
-`%type{name}` is used to indicate parameters which will be provided when calling the query.
+`%type{name}` is used to indicate parameters that will be provided when calling the query.
 `@type{name}` is used to indicate values (column names) which will be returned by the database after executing the query.
 
 Types may be `int`, `int32`, `int64`, `string`, `octets`, `float`, `bool`, `pdate`,
@@ -134,7 +134,7 @@ argument is provided. It must be a record whose fields correspond to the paramet
 - `record_out` : instead of outputing row(s) as tuple(s), they are presented as record(s).
 - `function_out` : the query is called with a function as its first argument. This function
 is called for each row with every values (column names) as a labelled arguments. The return value of the query
-is composed of the returned values of this function. This works like `List/Option.map`.
+is composed of the function's returned values. This works like `List/Option.map`.
 
 Options are separated by whitespaces.
 
