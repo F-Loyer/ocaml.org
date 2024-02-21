@@ -163,7 +163,7 @@ If we want to embed the custom error handled query in the `(let*)` chain,
 you may use the following expression:
 
 ```ocaml
- let* () = match%lwt ... in
+ let* () = let%lwt ... in
 ```
 
 ## Itering a List of Queries, Transactions
