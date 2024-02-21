@@ -120,13 +120,13 @@ With every input parameters as a labelled argument. If the query has no paramete
 
 There are different types of queries. A `get_many` query (like the example) returns a list of
 rows. `get_one` just returns the unique row, `get_opt` returns an option value (`None` or `Some`
-depending of the existance of a queried row), `execute` returns nothing `()`.
+depending on the existance of a queried row), `execute` returns nothing `()`.
 
 By default rows are presented as tuples.
 
 ### `ppx_rapper` Options
 
-Depending of the needs, a `ppx_rapper` query can be written as
+Depending on the needs, a `ppx_rapper` query can be written as
 
 ```ocaml
   [%rapper get_many {sql|...|sql} options]
