@@ -134,7 +134,7 @@ argument is provided. It must be a record whose fields correspond to the paramet
 - `record_out` : instead of outputing row(s) as tuple(s), they are presented as record(s).
 - `function_out` : the query is called with a function as its first argument. This function
 is called for each row with every values (column names) as a labelled arguments. The return value of the query
-is composed of the returned values of this function. This works like [List/Option.map].
+is composed of the returned values of this function. This works like `List/Option.map`.
 
 Options are separated by whitespaces.
 
