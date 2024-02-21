@@ -80,7 +80,6 @@ The following URIs are supported:
 - `"pgx://user:passwd@host/database"` (using pgx library),
 - `"mariadb://user:passwd@host/database"` (using mariadb library),
 
-
 ## Declaring and Using Queries
 
 ### Default Queries
