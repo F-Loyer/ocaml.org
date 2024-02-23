@@ -274,6 +274,15 @@ val h : int = 7
 
 There are now two definitions of `h` in the environment. The first `h` is unchanged. When the second `h` is defined, the first one becomes unreachable. <!--This means anything written after the second definition uses its value, but functions written *before* the second definition still use the first, even if called later.-->
 
+## `begin`... `end` expression
+
+When a long expression (with typically multiple lines) should be included in a pair of parenthesis, we can type instead `begin`__the expression__ `end`. These keywords will be more easily seen and will enhanve the readability of the expression. The following example shows how it works, but a bigger expression than `5+6` would better indicates its added value.
+
+```ocaml
+# 3* begin 5+6 end
+- : int = 33
+```
+
 ## Function as Values
 
 In OCaml, functions are values. This is the key concept of [functional programming](https://en.wikipedia.org/wiki/Functional_programming). In this context, it is also possible to say that OCaml has [first-class](https://en.wikipedia.org/wiki/First-class_function) functions.
