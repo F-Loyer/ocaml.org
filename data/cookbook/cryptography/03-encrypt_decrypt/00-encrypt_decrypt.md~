@@ -1,0 +1,43 @@
+---
+packages:
+- name: "x509"
+  version: "0.16.5"
+- name: "mirage-crypto-rng"
+  version: "0.11.2"
+- name: "mirage-crypto-pk"
+  version: "0.11.2"
+sections:
+- filename: main.ml
+  language: ocaml
+  code_blocks:
+  - explanation: |
+      The encryption function needs a initialized random number generator.
+    code: |
+      Mirage_crypto_rng_unix.initialize (module Mirage_crypto_rng.Fortuna);;
+  - explanation: |
+      Use the `mirage_crypto_pk` library and encrypt a message with the RSA
+	  algorythm. The public key must be an RSA key.
+    code:
+	  let message = "hello"
+      let encrypted_message =
+	    match public_key with 
+		| `RSA key ->
+             Mirage_crypto_pk.Rsa.PKCS1.encrypt
+               ~key (Cstruct.of_string message)
+		| failwith "An RSA key is expected";;
+  - explanation: |
+      Use the `mirage_crypto_pk` library and decrypt a message with the RSA
+	  algorythm. The private key must be an RSA key.
+    code:
+      let decrypted_message =
+	    match public_key with 
+		| `RSA key ->
+             (match Mirage_crypto_pk.Rsa.PKCS1.decrypt
+                                ~key encrypted_message with
+                | Some x -> Cstruct.to_string x
+                | None -> failwith "Unable to decode")
+		| failwith "An RSA key is expected";;
+      
+---
+
+- **Understanding `Mirage_crypto_pk`:** The `Mirage_crypto_pk` provides multiple algorithms, but only RSA is adequate if we want to encrypt or decrypt messages. The private and public keys are given by the `X509` module (see the [cookbook about opening certificates and private keys](/cookbook/cryptography/opening_certificates_and_keys). Note: an encryption should be preceeded by the verification of the certificate validity.
